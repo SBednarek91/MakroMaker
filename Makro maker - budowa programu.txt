@@ -1,0 +1,17 @@
+Program do tworzenia diety. 
+
+1. Powitanie - krótki opis programu. 
+2. Kwestionariusz 
+	a) imię
+	b) płeć - sprawdzenie
+	c) wiek - sprawdzenie
+	d) wzrost - sprawdzenie
+	e) waga - sprawdzenie
+	f) aktywność fizyczna - sprawdzenie
+
+3. Menu wyboru: redukcja, utrzymanie, masa
+4. Wyświetlenie 
+	a) podstawowego zapotrzebowania kcal
+	b) wybranego zapotrzebowania kcal
+	c) zalecana ilość wody
+	d) aktualne BMI
