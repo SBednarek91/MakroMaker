@@ -8,6 +8,9 @@ namespace MakroMaker
 {
     internal class Messages
     {
+
+       /* Wyświetlenie wiadomości powitalnej*/
+
         public void Welcomemessage()
         {
             Console.WriteLine("**********************");

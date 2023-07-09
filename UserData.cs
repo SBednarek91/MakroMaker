@@ -11,78 +11,82 @@ namespace MakroMaker
 {
     public class UserData
     {
-        public string imie;
-        public int wiek;
-        public double wzrost;
-        public double waga;
-        public string plec;
+        public int age;
+        public double height;
+        public double weight;
+        public string sex;
+
+        /*wczytywanie danych użytkownika*/
+       /* walidacja danych użytkownika*/
 
         public void GetUserData()
         {
             do
             {
                 Console.Write("Podaj wiek (15-80 lat): ");
-                string wiekTekst = Console.ReadLine();
-                if (!int.TryParse(wiekTekst, out wiek))
+                string ageTekst = Console.ReadLine();
+                if (!int.TryParse(ageTekst, out age))
                 {
                     Console.WriteLine("Niepoprawny format wieku. Spróbuj ponownie.");
                     continue;
                 }
-                if (wiek < 15 || wiek > 80)
+                if (age < 15 || age > 80)
                 {
                     Console.WriteLine("Wiek musi być między 15 a 80 lat. Spróbuj ponownie.");
                 }
-            } while (wiek < 15 || wiek > 80);
+            } while (age < 15 || age > 80);
 
             do
             {
                 Console.Write("Podaj wzrost (120-200 cm): ");
-                string wzrostTekst = Console.ReadLine();
-                if (!double.TryParse(wzrostTekst, out wzrost))
+                string heightTekst = Console.ReadLine();
+                if (!double.TryParse(heightTekst, out height))
                 {
                     Console.WriteLine("Niepoprawny format wzrostu. Spróbuj ponownie.");
                     continue;
                 }
-                if (wzrost < 120 || wzrost > 200)
+                if (height < 120 || height > 200)
                 {
                     Console.WriteLine("Wzrost powinien się zawierać pomiędzy 140cm a 200cm. Spróbuj ponownie.");
                 }
-            } while (wzrost < 120 || wzrost > 200);
+            } while (height < 120 || height > 200);
 
             do
             {
                 Console.Write("Podaj wagę (40-120 kg): ");
-                string wagaTekst = Console.ReadLine();
-                if (!double.TryParse(wagaTekst, out waga))
+                string weightTekst = Console.ReadLine();
+                if (!double.TryParse(weightTekst, out weight))
                 {
                     Console.WriteLine("Niepoprawny format wagi. Spróbuj ponownie.");
                     continue;
                 }
-                if (waga < 40 || waga > 120)
+                if (weight < 40 || weight > 120)
                 {
                     Console.WriteLine("Waga musi być między 40 a 120 kg. Spróbuj ponownie.");
                 }
-            } while (waga < 40 || waga > 120);
+            } while (weight < 40 || weight > 120);
 
             do
             {
                 Console.Write("Podaj płeć (k/m): ");
-                plec = Console.ReadLine().ToLower();
-                if (plec != "k" && plec != "m")
+                sex = Console.ReadLine().ToLower();
+                if (sex != "k" && sex != "m")
                 {
                     Console.WriteLine("Niepoprawna płeć. Spróbuj ponownie.");
                 }
-            } while (plec != "k" && plec != "m");
+            } while (sex != "k" && sex != "m");
 
             Console.WriteLine("Dane zostały zapisane.");
             Console.WriteLine();
         }
 
+        /*metoda na wyliczanie zapotrzebowania -300*/
+
         public void BMR1()
         { 
-            if (plec == "k")
+            if (sex == "k")
             {
-                double BMR = 655 + waga * 9.6 + wzrost * 5 - wiek * 6.76;
+                double BMR = 655 + weight * 9.6 + height * 5 - age * 6.76;
                 double zaokragloneBMR = Math.Round(BMR);
                 double BMR2 = zaokragloneBMR - 300;
                 double zaokragloneBMR2 = Math.Round(BMR2);
@@ -94,7 +98,7 @@ namespace MakroMaker
             }
             else
             {
-                double BMR = 66 + waga * 13.7 + wzrost * 5 - wiek * 6.76;
+                double BMR = 66 + weight * 13.7 + height * 5 - age * 6.76;
                 double zaokragloneBMR = Math.Round(BMR);
                 double BMR2 = zaokragloneBMR - 300;
                 double zaokragloneBMR2 = Math.Round(BMR2);
@@ -105,30 +109,34 @@ namespace MakroMaker
                 Console.WriteLine();
             }
         }
+
+        /*metoda na wyliczanie zapotrzebowania zerowego*/
 
         public void BMR2()
         {
-            if (plec == "k")
+            if (sex == "k")
             {
-                double BMR = 655 + waga * 9.6 + wzrost * 5 - wiek * 6.76;
+                double BMR = 655 + weight * 9.6 + height * 5 - age * 6.76;
                 double zaokragloneBMR = Math.Round(BMR);
                 Console.WriteLine("Twoje podstawowe zapotrzebowanie wynosi: " + zaokragloneBMR + " kcal");
                 Console.WriteLine();
             }
             else
             {
-                double BMR = 66 + waga * 13.7 + wzrost * 5 - wiek * 6.76;
+                double BMR = 66 + weight * 13.7 + height * 5 - age * 6.76;
                 double zaokragloneBMR = Math.Round(BMR);
                 Console.WriteLine("Twoje podstawowe zapotrzebowanie wynosi: " + zaokragloneBMR + " kcal");
                 Console.WriteLine();
             }
         }
 
+
+        /*metoda na wyliczanie zapotrzebowania +300*/
         public void BMR3()
         {
-            if (plec == "k")
+            if (sex == "k")
             {
-                double BMR = 655 + waga * 9.6 + wzrost * 5 - wiek * 6.76;
+                double BMR = 655 + weight * 9.6 + height * 5 - age * 6.76;
                 double zaokragloneBMR = Math.Round(BMR);
                 double BMR2 = zaokragloneBMR + 300;
                 double zaokragloneBMR2 = Math.Round(BMR2);
@@ -140,7 +148,7 @@ namespace MakroMaker
             }
             else
             {
-                double BMR = 66 + waga * 13.7 + wzrost * 5 - wiek * 6.76;
+                double BMR = 66 + weight * 13.7 + height * 5 - age * 6.76;
                 double zaokragloneBMR = Math.Round(BMR);
                 double BMR2 = zaokragloneBMR + 300;
                 double zaokragloneBMR2 = Math.Round(BMR2);
@@ -151,11 +159,15 @@ namespace MakroMaker
                 Console.WriteLine();
             }
         }
+
+
+        /*metoda na wyliczanie BMI 
+        zmiana koloru BMI wg zakresu*/
 
         public void BMI()
         {
-            double wzrostm2 = wzrost * 0.01;
-            double BMI = waga/(wzrostm2 * wzrostm2);
+            double wzrostm2 = height * 0.01;
+            double BMI = weight /(wzrostm2 * wzrostm2);
             double zaokragloneBMI = Math.Round(BMI, 1);
             
             if (BMI < 18.5)
@@ -190,35 +202,37 @@ namespace MakroMaker
 
         }
           
+        /*wybor opcji kcal uzytkownika */
+
         public int GetUserChoice()
         {
             Console.WriteLine("1. Redukcja wagi");
             Console.WriteLine("2. Utrzymanie wagi");
             Console.WriteLine("3. Zwiększenie wagi");
 
-            int opcja;
-            bool poprawnyWybor = false;
+            int option;
+            bool istrue = false;
 
             do
             {
-                string opcjaTekst = Console.ReadLine();
-                if (!int.TryParse(opcjaTekst, out opcja))
+                string optionTekst = Console.ReadLine();
+                if (!int.TryParse(optionTekst, out option))
                 {
                     Console.WriteLine("Niepoprawny format. Spróbuj ponownie.");
                     continue;
                 }
 
-                if (opcja < 1 || opcja > 3)
+                if (option < 1 || option > 3)
                 {
                     Console.WriteLine("Niepoprawny wybór. Spróbuj ponownie.");
                 }
                 else
                 {
-                    poprawnyWybor = true;
+                    istrue = true;
                 }
-            } while (!poprawnyWybor);
+            } while (!istrue);
 
-            return opcja;
+            return option;
         }
     }
     
